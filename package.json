@@ -1,12 +1,15 @@
 {
-  "name": "math-ai-deepseek",
+  "name": "math-ai-netlify",
   "version": "1.1.0",
-  "description": "数学核心素养AI - DeepSeek + Desmos + Netlify 部署版",
+  "description": "数学核心素养AI - DeepSeek版",
   "main": "index.html",
   "scripts": {
     "dev": "netlify dev",
     "build": "echo 'No build step required'",
     "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "netlify-cli": "^17.0.0"
