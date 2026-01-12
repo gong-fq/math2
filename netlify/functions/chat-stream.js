@@ -1,8 +1,8 @@
-const fetch = require('node-fetch'); // 确保环境支持 fetch
+const fetch = require('node-fetch'); // 必须引入依赖以修复 502 错误
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   try {
@@ -10,12 +10,13 @@ exports.handler = async (event, context) => {
     const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
     if (!DEEPSEEK_API_KEY) {
-      return { 
-        statusCode: 500, 
-        body: JSON.stringify({ error: '未在 Netlify 后台配置 DEEPSEEK_API_KEY 环境变量' }) 
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: '环境变量 DEEPSEEK_API_KEY 未配置' })
       };
     }
 
+    // 调用 DeepSeek API
     const response = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
       headers: {
@@ -23,31 +24,34 @@ exports.handler = async (event, context) => {
         'Authorization': `Bearer ${DEEPSEEK_API_KEY.trim()}`
       },
       body: JSON.stringify({
-        model: 'deepseek-chat', // 确保模型名称正确
+        model: 'deepseek-chat', // 明确使用 DeepSeek 模型
         messages: messages,
-        stream: true, // 强制开启流式
+        stream: true,
         temperature: 0.7
       })
     });
 
     if (!response.ok) {
-      const errorDetail = await response.text();
-      return { statusCode: response.status, body: errorDetail };
+      const errorText = await response.text();
+      return { statusCode: response.status, body: errorText };
     }
 
-    // 转发流式响应
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
+        'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': '*'
       },
       body: response.body,
       isBase64Encoded: false
     };
 
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Internal Server Error', message: error.message })
+    };
   }
 };
