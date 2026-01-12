@@ -53,19 +53,41 @@
 </head>
 <body>
     <div class="container">
-        <div class="left-panel">
-            <h1 style="font-size: 20px; margin-bottom: 8px;">数学核心素养AI</h1>
-            <p style="font-size: 12px; opacity: 0.8;">基于 DeepSeek 强大算力驱动</p>
-            <hr style="margin: 15px 0; opacity: 0.2;">
-            
-            <div style="font-size: 13px; line-height: 1.6;">
-                <p style="font-weight: bold; margin-bottom: 12px;"><i class="fas fa-info-circle"></i> 系统说明:</p>
-                <ul style="padding-left: 18px; opacity: 0.9;">
-                    <li style="margin-bottom: 12px;"><strong>AI 模型:</strong> 已集成 DeepSeek-V3/R1，支持复杂数学逻辑推理。</li>
-                    <li style="margin-bottom: 12px;"><strong>Desmos 绘图:</strong> 自动识别函数并绘制，或访问 <a href="https://www.desmos.com/?lang=zh-CN" target="_blank" style="color: #fff; text-decoration: underline;">Desmos 中文官网</a>。</li>
-                    <li style="margin-bottom: 12px;"><strong>公式渲染:</strong> MathJax 实时解析 LaTeX 语法。</li>
-                </ul>
-            </div>
+     <div class="left-panel">
+    <h1 style="font-size: 20px; margin-bottom: 8px;">数学核心素养AI</h1>
+    <p style="font-size: 12px; opacity: 0.8;">基于 DeepSeek 强大算力驱动</p>
+    <hr style="margin: 15px 0; opacity: 0.2;">
+    
+    <div style="font-size: 13px; line-height: 1.6;">
+        <p style="font-weight: bold; margin-bottom: 12px;"><i class="fas fa-info-circle"></i> 系统说明:</p>
+        <ul style="padding-left: 18px; opacity: 0.9;">
+            <li style="margin-bottom: 12px;"><strong>AI 模型:</strong> 已集成 DeepSeek-V3，提供深度数学逻辑推理。</li>
+            <li style="margin-bottom: 12px;"><strong>Desmos 绘图:</strong> 自动识别函数并绘制，或点击下方按钮访问 <a href="https://www.desmos.com/?lang=zh-CN" target="_blank" style="color: #fff; text-decoration: underline;">中文官网</a>。</li>
+        </ul>
+    </div>
+    </div>
+
+<div class="left-panel">
+    <h1 style="font-size: 20px; margin-bottom: 8px;">数学核心素养AI</h1>
+    <p style="font-size: 12px; opacity: 0.8;">基于 DeepSeek 强大算力驱动</p>
+    <hr style="margin: 15px 0; opacity: 0.2;">
+    
+    <div style="font-size: 13px; line-height: 1.6;">
+        <p style="font-weight: bold; margin-bottom: 12px;"><i class="fas fa-info-circle"></i> 系统说明:</p>
+        <ul style="padding-left: 18px; opacity: 0.9;">
+            <li style="margin-bottom: 12px;"><strong>AI 模型:</strong> 已集成 DeepSeek-V3，提供深度数学逻辑推理。</li>
+            <li style="margin-bottom: 12px;"><strong>Desmos 绘图:</strong> 自动识别函数并绘制，或点击下方按钮访问 <a href="https://www.desmos.com/?lang=zh-CN" target="_blank" style="color: #fff; text-decoration: underline;">中文官网</a>。</li>
+        </ul>
+    </div>
+    </div>
+
+<div class="tool-bar">
+    <button class="tool-btn" id="toggleDesmos"><i class="fas fa-chart-line"></i> 交互图形窗</button>
+    <a href="https://www.desmos.com/?lang=zh-CN" target="_blank" class="tool-btn" style="text-decoration: none;">
+        <i class="fas fa-external-link-alt"></i> Desmos 中文官网
+    </a>
+    <button class="tool-btn danger" id="clearChat" style="margin-left: auto;"><i class="fas fa-trash-alt"></i> 清空</button>
+</div>
 
             <div class="history-section">
                 <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">
